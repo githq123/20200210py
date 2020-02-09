@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flask</title>
+</head>
+<body>
+   <h1>h5testwords</h1>
+   {% for user in users %}
+   <li>{{user}}</li>
+   {% else %}
+   <li>什么都没写</li>
+   {% endfor %}
+      <table>
+          <thead>
+             <tr>
+                 <th>用户名</th>
+                 <th>年龄</th>
+                 <th>身高</th>
+             </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  {% for key in person.keys()%}
+                      <td>{{key}}</td>
+                  {% endfor %}
+              </tr>
+              <tr>
+                  {% for val in person.values()%}
+                      <td>{{val}}</td>
+                  {% endfor %}
+              </tr>
+          </tbody>
+      </table>
+
+
+
+      <table>
+          <thead>
+          <tr>
+              <th>序号</th>
+              <th>书名</th>
+              <th>作者</th>
+              <th>价格</th>
+              <th>总数</th>
+          </tr>
+          </thead>
+          <tbody>
+             {% for book in books %}
+                   {% if loop.first %}
+                      <tr style="background:green">
+                       {% elif loop.last%}
+                      <tr style="background:pink">
+                       {% else %}
+                        <tr>
+                        {% endif %}
+
+                      <td>{{loop.index0}}</td>
+                      <td>{{book.name}}</td>
+                      <td>{{book.author}}</td>
+                      <td>{{book.price}}</td>
+                      <td>{{loop.length}}</td>
+
+              </tr>
+                  {% endfor %}
+          </tbody>
+      </table>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#{{ person.username }}#}
+
+{#{{ person.1 }}#}
+
+{#{{ username }}#}
+
+{#{% if age < 18 %}#}
+{#   <p>年龄太小</p>#}
+{#{% elif age == 18%}#}
+{#    <p>已满18周岁</p>#}
+{#{% else %}#}
+{#    <p>大于18</p>#}
+{#{% endif %}#}
+
+{#{% if 'zhangsan' in heros%}#}
+{#    <p>存在</p>#}
+{#    {% else %}#}
+{#    <p>不存在</p>#}
+{#{% endif %}#}
+
+{#{% for person in persons %}#}
+{#    <p>{{ person }}</p>#}
+{#{% endfor %}#}
+
+{#{% for key,value in person.items %}#}
+{#    <p>{{ key }}</p>#}
+{#    <p>{{ value }}</p>#}
+{#{% endfor %}#}
+
+{#{% for person in persons reversed%}#}
+{#    <p>{{ person }}</p>#}
+{#{% endfor %}#}
+
+
+{#<table>#}
+{#    <thead>#}
+{#    <tr>#}
+{#        <th>序号</th>#}
+{#        <th>书名</th>#}
+{#        <th>作者</th>#}
+{#        <th>价格</th>#}
+{#    </tr>#}
+{#    </thead>#}
+{#    <tbody>#}
+{#    {% for book in books %}#}
+{#        {% if forloop.first %}#}
+{#            <tr style="background: pink">#}
+{#            {% elif forloop.last %}#}
+{#            <tr style="background: green">#}
+{#            {% else %}#}
+{#            <tr>#}
+{#        {% endif %}#}
+{#        <td>{{ forloop.revcounter }}</td>#}
+{#            <td>{{ forloop.counter }}</td>#}
+{#        <td>{{ book.name }}</td>#}
+{#        <td>{{ book.author }}</td>#}
+{#        <td>{{ book.price }}</td>#}
+{#        </tr>#}
+{#    {% endfor %}#}
+{##}
+{#    </tbody>#}
+{#</table>#}
+{#<ul>#}
+{#{% for comment in comments %}#}
+{#    <li>{{ comment }}</li>#}
+{#    {% empty %}#}
+{#    <li>没有任何评论</li>#}
+{##}
+{#{% endfor %}#}
+{#</ul>#}
+
+
+{% with zs=persons.0 %}
+{#    只能在with里面使用#}
+    <p>{{ zs }}</p>
+    <p>{{ zs }}</p>
+{% endwith %}
+{% with persons.1 as  li%}
+    <p>{{ li }}</p>
+    <p>{{ li }}</p>
+{% endwith %}
+{#{% autoescape off%}#}
+{% autoescape on %}
+{{ info }}
+{% endautoescape %}
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'common/base.html' %}
+{% from 'common/macro.html' import pagination_show%}
+{% block title %}
+博客搜索
+{% endblock %}
+
+{% block page_content %}
+
+    <div style="width:100%;text-align:center">
+        <form action="{{url_for('users.blog2') }}" method="get"  style="margin: auto" >
+        <input class="d1" name="q" type="text" placeholder="搜索从这里开始...">
+        <button class="b" type="submit">搜索</button>
+            </form>
+    </div>
+    {% for p in posts %}
+    <div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="{{ url_for('static',filename='upload/'+p.user.icon)}}" alt="头像" style="width: 64px;height: 64px">
+    </a>
+  </div>
+  <div class="media-body">
+      <div style="float: right">{{ moment(p.timestamp).fromNow() }}</div>
+    <h4 class="media-heading">{{ p.user.username }}</h4>
+    {{ p.content }}
+
+  </div>
+</div>
+    {% endfor %}
+      {{ pagination_show(pagination,'users.blog2') }}
+{% endblock %}

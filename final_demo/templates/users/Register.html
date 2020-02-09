@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+ <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+<script>
+        $(function () {
+            $("#zphone").on('click', function () {
+                var that = this;
+                 telephone = $("#telephone").val();
+                // 通过ajax发送get请求
+                $.get('/user/send_message', {'telephone':telephone}, function (data) {
+                     console.log(data);
+                    if (data.ok == 1) {
+                        var time = 60;
+                        $(that).attr('disabled', true);
+                        $(that).css({'backgroundColor': "gray"});
+                        showMsg(that, time);
+                        var timer = window.setInterval(function () {
+                            --time;
+                            showMsg(that, time);
+                            if (time == 0) {
+                                window.clearInterval(timer);
+                                $(that).attr('disabled', false);
+                                $(that).css({'backgroundColor': "#76bb2a"});
+                                $(that).val("获取验证码");
+                            }
+                        }, 1000)
+                    } else {
+                        alert(data.msg);
+                    }
+                })
+            });
+            function showMsg(obj, time) {
+                var msg = time + "秒后重新发送!";
+                $(obj).val(msg);
+            }
+        })
+    </script>
+
+</head>
+<body>
+
+ <form action="" method="post">
+            {% csrf_token %}
+             <table>
+                 <tbody>
+                 <tr>
+                     <td>用户名：</td>
+                     <td><input type="text" name="username" placeholder="请输入用户名"></td>
+                 </tr>
+
+                 <tr>
+                     <td>手机号：</td>
+                     <td><input class="inp" id="telephone" name="telephone" type="text" placeholder="请输入手机号"></td>
+                 </tr>
+                 <tr>
+                     <td><input type="button" id="zphone" value=" 获取验证码 "></td>
+                     <td><input class="inp" id="code" type="text" name="code" placeholder="请输入验证码"></td>
+                 </tr>
+
+                 <tr>
+                     <td>邮箱：</td>
+                     <td><input type="text" name="email" placeholder="请输入邮箱"></td>
+                 </tr>
+                  <tr>
+                     <td>密码：</td>
+                     <td><input type="text" name="password1" placeholder="请输入密码"></td>
+                 </tr>
+                   <tr>
+                     <td>确认密码：</td>
+                     <td> <input type="text" name="password2" placeholder="请确认密码"></td>
+                 </tr>
+                   <tr>
+                     <td> 成为管理员：</td>
+                     <td> <input type="checkbox" name="is_superuser"></td>
+                 </tr>
+                   <tr>
+                     <td></td>
+                     <td> <input class="btn" id="embed-submit" type="submit" value="注册"></td>
+                 </tr>
+                 </tbody>
+             </table>
+        </form>
+<a href="{% url 'users:login' %}">已有账号，快去登录>></a>
+</body>
+</html>
+
+

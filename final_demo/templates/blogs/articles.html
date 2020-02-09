@@ -1,0 +1,85 @@
+{% extends 'users/base.html' %}
+{% block title %}
+博客首页
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+
+{% block content %}
+    {% if front_user %}
+        <div class="page-header">
+  <h1>博客列表 <small><a href="{% url 'blogs:search' %}">进入搜索页面</a></small></h1>
+</div>
+<br/>
+    <a href="{% url 'blogs:articles' %}">最新</a>
+    <a href="{% url 'blogs:articles' %}?order=total_views">最热</a>
+
+    <br/>
+    <br/>
+<a href="{% url 'blogs:new' %}" rel="external nofollow" >上传新博客</a>
+<table class="table">
+<tr>
+    <td></td>
+    <td>文章</td>
+    <td>创建时间</td>
+    <td>标签</td>
+    <td>浏览量:</td>
+</tr>
+    {% for article in articles %}
+<tr>
+    <td><a href="{% url 'blogs:delete' article.id%}">删除</a></td>
+    <td><a href="{% url 'blogs:detail' article.id %}"> {{ article.title }} </a></td>
+    <td> {{ article.date_added }} </td>
+    <td>{% for tag in article.tags.all %}{{ tag }}&nbsp;&nbsp;{% endfor %}</td>
+    <td>{{ article.total_views }}</td>
+</tr>
+  {% endfor %}
+</table>
+
+<br/>
+
+<div class="pagination row">
+    <div class="m-auto">
+        <span class="step-links">
+            <!-- 如果不是第一页，则显示上翻按钮 -->
+            {% if articles.has_previous %}
+                <a href="?page=1" class="btn btn-success">
+                    &laquo; 1
+                </a>
+                <span>...</span>
+                <a href="?page={{ articles.previous_page_number }}"
+                   class="btn btn-secondary"
+                >
+                    {{ articles.previous_page_number }}
+                </a>
+            {% endif %}
+
+            <!-- 当前页面 -->
+            <span class="current btn btn-danger btn-lg">
+                {{ articles.number }}
+            </span>
+
+            <!-- 如果不是最末页，则显示下翻按钮 -->
+            {% if articles.has_next %}
+                <a href="?page={{ articles.next_page_number }}"
+                   class="btn btn-secondary"
+                >
+                    {{ articles.next_page_number }}
+                </a>
+                <span>...</span>
+                <a href="?page={{ articles.paginator.num_pages }}"
+                   class="btn btn-success"
+                >
+                    {{ articles.paginator.num_pages }} &raquo;
+                </a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+    {% else %}
+    <h3>登陆后查看!</h3>
+    {% endif %}
+
+{% endblock %}
+

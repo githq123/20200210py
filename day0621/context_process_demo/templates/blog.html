@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}
+blog
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block body %}
+blog首页{{ request.path }}
+{% endblock %}

@@ -1,0 +1,35 @@
+{#第一种导入#}
+{% from "macros/macros.html" import input %}
+{#可以使用别名as inp#}
+{#{% from "macros/macros.html" import macros %}#}
+{#第二种导入#}
+{#调用时input变为macros.input#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>include1</title>
+    {% include "common/header.html"%}
+</head>
+<body>
+    <div class="content">
+        <table>
+            <tbody>
+               <tr>
+                   <td>用户名：</td>
+                   <td>{{input('username') }}</td>
+               </tr>
+                <tr>
+                   <td>密码：</td>
+                   <td>{{input('password',type="password") }}</td>
+               </tr>
+               <tr>
+                   <td></td>
+                   <td>{{input(value="提交",type="submit") }}</td>
+               </tr>
+            </tbody>
+        </table>
+    </div>
+    {% include "common/footer.html"%}
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends 'users/base.html' %}
+{% block title %}
+修改
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block content %}
+ <form action="{% url 'blogs:edit' article.id %}" method="post">
+       {% csrf_token %}
+     <input name="id" type="hidden" value="" ><br/>
+     <label>文章名</label>
+    <input name="title" type="text" size="22" required="required" /><br />
+     <label>内容</label>
+    <input name="text" type="text" size="37" required="required" /><br />
+     <input name="add_time" type="hidden" value="" ><br/>
+    <input type="submit" value="提交">
+  </form>
+{% endblock %}

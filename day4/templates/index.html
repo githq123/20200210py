@@ -1,0 +1,42 @@
+{#原生#}
+<meta  name="csrf-token" content="csrf_token()">
+
+<form action="{{  url_for ('registers')}}"   method="post">
+    <table>
+        <tr>
+            <td>{{ form.name.label }}</td>
+            <td>{{ form.name }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.email.label }}</td>
+            <td>{{ form.email }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.confirm.label }}</td>
+            <td>{{ form.confirm }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.submit.label }}</td>
+            <td>{{ form.submit }}</td>
+        </tr>
+    </table>
+</form>
+
+{#快速渲染#}
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html'as wtf %}
+{% block content %}
+  {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span></button>
+       <strong>Warning!</strong> {{ message }}
+       </div>
+    {% endfor %}
+    {{ wtf.quick_form(form) }}
+     你好{{ name }}
+{% endblock %}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/jiebawordcloud/stopwords_cn.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/rw/adress.db" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/rw/price2016.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/test/test_text.txt" charset="GBK" />
+  </component>
+</project>

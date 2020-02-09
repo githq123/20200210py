@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+{% if img_url %}
+    <img src="{{ img_url }}" alt="abccc">
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="photo">
+    <input type="submit" value="上传">
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'front/base.css' %}">
+</head>
+<body>
+<nav>
+    <ul class="nav">
+        <li>
+            <a href="{% url 'index' %}">首页</a>
+        </li>
+        <li>
+            <a href="{% url 'add'%}">提交图书</a>
+        </li>
+    </ul>
+</nav>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

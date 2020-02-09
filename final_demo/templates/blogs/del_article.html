@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+{% block title %}
+删除
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block content %}
+<h3>是否删除</h3>
+ <form action="{% url 'blogs:delete'  article_id%}" method="post">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="确定">
+<a href="{% url 'blogs:articles' %}">取消</a>
+  </form>
+
+{% endblock %}

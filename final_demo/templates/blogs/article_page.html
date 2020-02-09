@@ -1,0 +1,16 @@
+{% extends 'users/base.html' %}
+{% block title %}
+博客内容{{ article.title }}
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block content %}
+<h3>标题： {{ article.title }}</h3>
+    <br/>
+    <h4>内容: {{ article.text }}</h4>
+    <br/>
+    浏览量: {{ article.total_views }}
+<a href="{% url 'blogs:edit' article.id %}"  >修改</a>
+<a href="{% url 'blogs:articles' %}">返回首页</a>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>表单</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="{{url_for('index')}}"method="post">-->
+    <!--用户名：<input type="text" name="username">-->
+    <!--<input type="submit" value="立即登录">-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+{% extends 'bootstrap/base.html'%}
+{# 导入快速渲染工具 #}
+{% import 'bootstrap/wtf.html'as wtf%}
+{% block content %}
+<div class="container">
+{{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

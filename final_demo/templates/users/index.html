@@ -1,0 +1,16 @@
+{% extends 'users/base.html' %}
+{% block title %}
+首页
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+  <h1>用户首页!</h1>
+  <p>这里可以进行用户操作</p>
+  <p><a class="btn btn-primary btn-lg" href="{% url 'blogs:articles' %}" role="button">快去看看博客吧</a></p>
+  <p><a class="btn btn-primary btn-lg" href="{% url 'pachong:pachong_index' %}" role="button">快去看看爬虫吧</a></p>
+</div>
+{% endblock %}
+

@@ -1,0 +1,17 @@
+{% extends 'cms/base1.html' %}
+{% block title %}
+管理员首页
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block content %}
+
+    <div class="jumbotron">
+  <h1>管理员首页!</h1>
+  <p>这里可以进行管理员操作</p>
+  <p><a class="btn btn-primary btn-lg" href="{% url 'blogs:blog1' %}" role="button">快去看看博客吧</a></p>
+</div>
+
+{% endblock %}
+

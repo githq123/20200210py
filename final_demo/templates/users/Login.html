@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+ <form action="" method="post">
+{% csrf_token %}
+    <table>
+    <tbody>
+    <tr>
+        <td>手机号</td>
+        <td><input type="text" name="telephone"></td>
+    </tr>
+    <tr>
+        <td>密码</td>
+        <td><input type="text" name="password"></td>
+    </tr>
+    <tr>
+        <td>我要进入管理员页面：</td>
+        <td><input type="checkbox" name="is_superuser"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="登录"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <ul>
+            {% for message  in  messages %}
+                {% if message.tags == 'info'%}
+                    <div class="alert alert-danger" role="alert">{{ message }}</div>
+                {% endif %}
+
+            {% endfor %}
+
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+    </table>
+</form>
+         <h5>忘记密码了？</h5>
+    <h5>点击<a href='{% url "password_reset_recover" %}'>这里</a>重置密码</h5>
+</body>
+</html>

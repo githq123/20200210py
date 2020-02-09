@@ -1,0 +1,19 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block title %}
+头像上传页
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+       <div>
+        <label for="img">请选择图片</label>
+        <input type="file" id="img" name="img">
+        </div>
+       <button type="submit" >上传</button>
+    </form>
+{% endblock %}
+

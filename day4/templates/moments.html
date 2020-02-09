@@ -1,0 +1,13 @@
+<h1>时间本地化显示</h1>
+<div>时间：{{ moment(current_time).format('LLLL') }}</div>
+<div>时间：{{ moment(current_time).format('LLL') }}</div>
+<div>时间：{{ moment(current_time).format('LL') }}</div>
+<div>时间：{{ moment(current_time).format('L') }}</div>
+<div>时间：{{ moment(current_time).format('YYYY-MM-DD') }}</div>
+
+{#时间差值显示#}
+<div>时间：{{ moment(current_time).fromNow() }}</div>
+
+{{ moment.include_jquery() }}
+{{ moment.include_moment() }}
+{{ moment.locale('zh-CN') }}

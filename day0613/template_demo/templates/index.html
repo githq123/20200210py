@@ -1,0 +1,25 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>首页</title>#}
+{#</head>#}
+{#<body>#}
+{#{%  include 'header.html' %}#}
+{#<div class="content">#}
+{#    这是中间内容{{ username }}#}
+{#</div>#}
+{#{% include 'footer.html' %}#}
+{#</body>#}
+{#</html>#}
+{% extends 'base.html' %}
+
+{% block title %}
+    我是首页
+{% endblock %}
+
+
+{% block content %}
+    <p>{{ block.super }}</p>
+    我是首页内容
+{% endblock %}

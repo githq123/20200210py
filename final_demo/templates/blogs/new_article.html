@@ -1,0 +1,22 @@
+{% extends 'users/base.html' %}
+{% block title %}
+添加
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block content %}
+ <form action="{% url 'blogs:new' %}" method="post">
+       {% csrf_token %}
+     <input name="id" type="hidden" value="" ><br/>
+     <label>文章名</label>
+    <input name="title" type="text" size="22" class="form-control col-3"required="required" /><br />
+     <label>内容</label>
+    <input name="text" type="text" size="37" class="form-control col-3"required="required" /><br />
+     <input name="add_time" type="hidden" value="" ><br/>
+     <label for="tags">标签</label>
+        <input type="text" class="form-control col-3" id="tags" name="tags">
+      <br/><br/>
+    <input type="submit" value="提交">
+  </form>
+{% endblock %}

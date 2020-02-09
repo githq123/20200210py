@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}
+video
+{% endblock %}
+{% block head %}
+ <meta name="csrf_token" content="{{ csrf_token }}">
+{% endblock %}
+{% block body %}
+video首页{{ request.path }}
+{% endblock %}

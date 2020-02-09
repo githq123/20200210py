@@ -1,0 +1,10 @@
+{% extends "common/base.html" %}
+{% block title %}
+    课程详情页面
+   {% endblock %}
+{% block body_block %}
+    {{ super() }}
+{#    既要显示子页面，也要显示父页面加super，不写只显示子页面#}
+    <p style="background: beige">这里是子页面代码</p>
+    这是课程详情首页
+   {% endblock %}
